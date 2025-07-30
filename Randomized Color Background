@@ -1,0 +1,17 @@
+; loads a random background color to the accumulator
+; loads 0 into X register
+LDA $fe
+LDX #0
+
+; loops over all pixels on screen and gives changes its register to the random color
+start:
+STA $200, X
+STA $300, X
+STA $400, X
+STA $500, X
+
+; increments the X register
+; loops back again to fill in more pixels if screen not full 
+INX
+CMP $FF
+BNE start
